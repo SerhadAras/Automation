@@ -12,7 +12,7 @@ namespace WebUntis
 {
     class Program
     {
-        static void DownloadFourWeeks(string email, string pass, int classKey, string klas, string path)
+        static void DownloadSixWeeks(string email, string pass, int classKey, string klas, string path)
         {
             var options = new ChromeOptions();
             options.AddUserProfilePreference("profile.default_content_setting_values.automatic_downloads", 1);
@@ -92,7 +92,7 @@ namespace WebUntis
             driver.FindElement(By.XPath("//*[@id='ImportFromFile']/span")).Click();
             driver.FindElement(By.XPath("//span[contains(text(), 'Browse')]")).Click();
             Thread.Sleep(1000);
-            Process.Start(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName+@"\upload.exe"); 
+            Process.Start(Directory.GetCurrentDirectory()+@"\upload.exe"); 
             Thread.Sleep(1000);
             driver.FindElement(By.XPath("//span[contains(text(), 'Select a calendar')]")).Click();
             driver.FindElement(By.XPath("//span[contains(text(), 'Calendar')]")).Click();
@@ -130,10 +130,10 @@ namespace WebUntis
             string pass = "pass"; //password
             string klas = "1ITSOF4"; //classname
             string path = @"D:\Downloads\"; // download folder path
-            int classID = 9741; //class
+            int classID = 9741; //classid
 
             Clean(path);
-            DownloadFourWeeks(email, pass, classID, klas.ToUpper(), path);
+            DownloadSixWeeks(email, pass, classID, klas.ToUpper(), path);
         }
     }
 }
